@@ -19,7 +19,7 @@ func gopath(i int, path string) {
 	for i := 0; i < igits; i++ {
 		fmt.Printf("更新"+CL_CYAN+"(%d/%d)"+CL_DEFAULT, i+1, igits)
 
-		b := GitPull(path)
+		b := GitPull(gits[i])
 		if b {
 			fmt.Printf("成功 [%d%%]\r\n", int((i+1)*100/igits))
 		} else {
