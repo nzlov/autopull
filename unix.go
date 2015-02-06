@@ -22,7 +22,7 @@ func GetGitPath(gopath string) []string {
 		fmt.Printf(CL_RED+"Error:%s"+CL_DEFAULT+".\r\n", err.Error())
 		return make([]string, 0)
 	}
-	return strings.Split(string(finds), ".git")
+	return strings.Split(string(finds), ".git\n")
 }
 
 func GitPull(path string) bool {
