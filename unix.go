@@ -26,12 +26,8 @@ func GetGitPath(gopath string) []string {
 }
 
 func GitPull(path string) bool {
-	path = strings.TrimSpace(path)
-	c1 := exec.Command("cd", path)
-	c2 := exec.Command("git", "pull")
-	c2.Stdin, _ = c1.StdoutPipe()
-	c1.Run()
-	_, err := c2.Output()
+	c := exec.Command("git", "-C", path, "pull")
+	_, err := c.Output()
 	if err != nil {
 		fmt.Printf("\r\n" + CL_RED + "[" + path + "] Error:" + err.Error() + CL_DEFAULT + "\r\n")
 		return false
