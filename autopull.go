@@ -1,10 +1,13 @@
 package main
 
 import (
+	"flag"
 	"fmt"
 )
 
 var gopathstr []string
+var fix = flag.Bool("F", false, "还原更改")
+var info = flag.Bool("I", false, "详细信息")
 
 func gopaths() {
 	gopathstr = GetGOPATHS()
@@ -30,6 +33,8 @@ func gopath(i int, path string) {
 }
 
 func main() {
+	flag.Parse()
+	// fmt.Println(*fix, *info)
 	fmt.Println("欢迎使用AutoPull。")
 	fmt.Println("分析$GOPATH")
 	gopaths()
